@@ -1,0 +1,79 @@
+<!-- Elect yourself as CEO 
+===
+* Nominate yourself as CEO
+===
+
+===
+Jonson votes NO
+
+Nguyen votes NO
+
+Your turn to vote
+* No
+* Yes
+===
+
+===
+Outcome: Yes=x No=z
+The board has voted down your proposal
+* Ok :(
+* Call for revote
+===
+
+===
+Jonson still votes NO
+
+Nguyen still votes NO
+
+Your turn to vote
+* Change vote to NO
+* Don't change vote
+* Change vote to YES
+===
+
+===
+Outcome: Yes=x No=z
+The board has approved you as CEO!
+You win!
+===
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Voting Stage</title>
+<script type="text/javascript" src="lib.js"></script>
+<script type="text/javascript">
+	function jonsonVotes(){}
+	function ngyenVotes(){}
+	function youVote(){
+	}
+
+	function initialVote(){
+
+	}
+
+	function nextNode(form){
+
+	}
+</script>
+</head>
+<body>
+
+<form id="nomination" class="story-node" data-next-node="initial-vote" onsubmit="nextNode(this)">
+	<button onclick="nominateYourself()">
+	<input type="submit" onclick="">
+</form>
+
+<div id="initial-vote" class="story-node" data-initialize="initialVote">
+
+</div>
+
+<form onsubmit="alert(this)">
+	<input type="submit" name="mysub" onclick="alert('mytest')">
+</form>
+
+
+
+</body>
+</html>

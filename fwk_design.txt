@@ -1,0 +1,6 @@
+Need a way to present options.
+- Need self inspection for code
+- Probably necessitates having a concise state machine description 
+
+How to show "animations" e.g. people having a vote
+

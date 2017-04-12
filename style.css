@@ -1,0 +1,7 @@
+form {
+	display: none;
+}
+
+form[data-active] {
+	display: block;
+}
