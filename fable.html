@@ -11,8 +11,8 @@
 
         var strength;
         
-        var equipped = {};
-        var unequipped = {
+        var equippedItems = {};
+        var unequippedItems = {     //Maps item name to its power
             helmet: 2,
             cuirass: 4,
             greaves: 3,
@@ -24,19 +24,19 @@
         }
 
         function equip(item) {
-            var itemPower = unequipped[item];
+            var itemPower = unequippedItems[item];
             setStrength(strength + itemPower);
             // move item from equipped to unequipped
-            equipped[item] = itemPower;
-            delete unequipped[item];
+            equippedItems[item] = itemPower;
+            delete unequippedItems[item];
             updateEquipmentDisplays();
         }
         function unequip(item) {
-            var itemPower = equipped[item];
+            var itemPower = equippedItems[item];
             setStrength(strength - itemPower);
             // move item from unequipped to equipped
-            unequipped[item] = itemPower;
-            delete equipped[item];
+            unequippedItems[item] = itemPower;
+            delete equippedItems[item];
             updateEquipmentDisplays();
         }
 
@@ -55,7 +55,6 @@
             display.textContent = strength;
         }
 
-        //TODO generalize? toggleElement
         function toggleElement(id) {
             var element = document.getElementById(id);
             element.hidden = !element.hidden;
@@ -63,13 +62,13 @@
 
         function updateEquipmentDisplays() {
             // This seems unnecessary...
-            for (var itemName in equipped){
+            for (var itemName in equippedItems){
                 var item = document.querySelector('#equipped-display [value=' + itemName + ']');
                 item.hidden = false;
                 item = document.querySelector('#unequipped-display [value=' + itemName + ']');
                 item.hidden = true;
             }
-            for (var itemName in unequipped){
+            for (var itemName in unequippedItems){
                 var item = document.querySelector('#equipped-display [value=' + itemName + ']');
                 item.hidden = true;
                 item = document.querySelector('#unequipped-display [value=' + itemName + ']');
@@ -91,14 +90,9 @@
 <form id="intro" onsubmit="goToNext(this.id); return false" data-onload="loadLevel">
     <p>You must get a blessing from the Tree of Meekness. Only the weak are granted its blessing.</p>
     <input type="submit" value="Let's go!">
-    
-    <!-- <input type="button" value="Save and go to Main Menu" onclick="goTo('main-menu')"> -->
-
 </form>
 
 <form id="gameplay">
-    <!-- <p>Gameplay goes here</p> -->
-    <!-- <div class="power-display"></div> -->
     Your power: <span class="power-display"></span>
     <br>
     <br>
@@ -125,59 +119,57 @@
     <input id="approach-tree" type="button" value="Approach the tree" onclick="approachTree()">
     <input type="button" onclick="toggleElement('code-hint')" value="Show code">
     <pre id="code-hint" hidden>
-var BASE_STRENGTH = 5;
+        var BASE_STRENGTH = 5;
 
-var strength;
+        var strength;
+        
+        var equippedItems = {};
+        var unequippedItems = {     //Maps item name to its power
+            helmet: 2,
+            cuirass: 4,
+            greaves: 3,
+            boots: 2
+        };
 
-var equipped = {};
-var unequipped = {
-    helmet: 2,
-    cuirass: 4,
-    greaves: 3,
-    boots: 2
-};
+        function loadLevel() {
+            setStrength(BASE_STRENGTH);
+        }
 
-function loadLevel() {
-    setStrength(BASE_STRENGTH);
-}
+        function equip(item) {
+            var itemPower = unequippedItems[item];
+            setStrength(strength + itemPower);
+            // move item from equipped to unequipped
+            equippedItems[item] = itemPower;
+            delete unequippedItems[item];
+            updateEquipmentDisplays();
+        }
+        function unequip(item) {
+            var itemPower = equippedItems[item];
+            setStrength(strength - itemPower);
+            // move item from unequipped to equipped
+            unequippedItems[item] = itemPower;
+            delete equippedItems[item];
+            updateEquipmentDisplays();
+        }
 
-function equip(item) {
-    var itemPower = unequipped[item];
-    setStrength(strength + itemPower);
-    // move item from equipped to unequipped
-    equipped[item] = itemPower;
-    delete unequipped[item];
-    updateEquipmentDisplays();
-}
-function unequip(item) {
-    var itemPower = equipped[item];
-    setStrength(strength - itemPower);
-    // move item from unequipped to equipped
-    unequipped[item] = itemPower;
-    delete equipped[item];
-    updateEquipmentDisplays();
-}
-
-function approachTree() {
-    if (strength < 5) {
-        goTo('blessing');
-    } else {
-        goTo('no-blessing');
-    }
-}
+        function approachTree() {
+            if (strength < 5) {
+                goTo('blessing');
+            } else {
+                goTo('no-blessing');
+            }
+        }
     </pre>
     <br>
     <br>
     <br>
     <input type="button" value="Save and go to Main Menu" onclick="goTo('main-menu')">
-
 </form>
 
 <form id="no-blessing">
     <p>You are not truly meek...</p>
     <input type="button" value="Try again" onclick="goTo('gameplay')">
 </form>
-
 
 <form id="blessing">
     <p>You got the blessing!</p>
