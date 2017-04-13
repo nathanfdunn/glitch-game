@@ -1,0 +1,23 @@
+/*#more-info {
+	display: none;
+}
+
+#more-info + p {
+	display: none;
+}
+
+#more-info:checked + p {
+	display: block;
+}
+
+
+#more-info + label {
+	background-color: #ddd;
+	border-radius: 5px;
+	padding: 5px;
+	cursor: ;
+}
+
+#more-info:checked + p {
+	display: block;
+}*/

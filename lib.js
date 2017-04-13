@@ -17,17 +17,20 @@ function deactivateAll() {
 }
 
 function goTo(nodeName) {
-	if (nodeName == 'intro'){
-		yesVotes = 0;
-		noVotes = 2;
-	}
 	deactivateAll();
-	document.getElementById(nodeName).setAttribute('data-active', '');
+	var destination = document.getElementById(nodeName);
+	destination.setAttribute('data-active', '');
+	if (destination.dataset.onload){
+		eval(destination.dataset.onload)();
+	}
 }
 
 function goToNext(formId) {
 	deactivateAll();
 	var query = '#' + formId + ' + form';
 	// console.log('query!!', query);
-	document.querySelector('#' + formId + ' + form').setAttribute('data-active', '');
+	// document.querySelector('#' + formId + ' + form').setAttribute('data-active', '');
+	var destinationId = document.querySelector('#' + formId + ' + form').id;
+	goTo(destinationId);
 }
+
