@@ -1,3 +1,19 @@
+h2, h2 + p {
+	display: inline;
+}
+
+
+#equipped-display, #unequipped-display {
+	padding: 10px;
+	border: solid black 1px;
+}
+
+
+#approach-tree {
+	font-size: 200%;
+	/*margin: 40px;*/
+}
+
 /*#more-info {
 	display: none;
 }

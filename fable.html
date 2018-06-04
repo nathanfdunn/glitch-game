@@ -121,10 +121,9 @@
     <pre id="code-hint" hidden>
         var BASE_STRENGTH = 5;
 
-        var strength;
+        var strength, equippedItems, unequippedItems;
         
-        var equippedItems = {};
-        var unequippedItems = {     //Maps item name to its power
+        var items = {     //Maps item name to its power
             helmet: 2,
             cuirass: 4,
             greaves: 3,
@@ -133,6 +132,8 @@
 
         function loadLevel() {
             setStrength(BASE_STRENGTH);
+            equippedItems = loadEquippedItems();
+            unequippedItems = loadUnequippedItems();
         }
 
         function equip(item) {
@@ -158,6 +159,11 @@
             } else {
                 goTo('no-blessing');
             }
+        }
+
+        function saveLevel() {
+            saveEquippedItems(equippedItems);
+            saveUnequippedItems(unEuippedItems);
         }
     </pre>
     <br>

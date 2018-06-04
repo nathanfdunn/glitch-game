@@ -5,17 +5,3 @@ form {
 form[data-active] {
 	display: block;
 }
-
-#equipped-display, #unequipped-display {
-	padding: 10px;
-	border: solid black 1px;
-}
-
-h2, h2 + p {
-	display: inline;
-}
-
-#approach-tree {
-	font-size: 200%;
-	/*margin: 40px;*/
-}
