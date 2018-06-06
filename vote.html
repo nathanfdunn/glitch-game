@@ -11,6 +11,11 @@
 
 	<script type="text/javascript" src="lib.js"></script>
 	
+
+    <link rel="stylesheet" type="text/css" href="prism.css">
+    <script type="text/javascript" src="prism.js"></script>
+
+
 	<script type="text/javascript" data-inspect>
 		$.validator.addMethod('yesOrNo', function(value, element){
 			if (!value){
@@ -85,7 +90,7 @@
 					yesVotes -= 1;
 					noVotes += 1;
 				}
-				
+
 			}
 
 			updateVoteCountDisplay();
@@ -203,10 +208,11 @@
 	<input type="button" value="Try again?" onclick="goTo('intro')">
 </form>
 
-
 <input type="button" data-toggle value="Show code">
 
-<pre id="code-hint"></pre>
+<pre>
+	<code id="code-hint" class="language-javascript"></code>
+</pre>
 
 </body>
 </html>

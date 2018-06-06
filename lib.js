@@ -46,6 +46,10 @@ $(function(){
 		$('#code-hint').hide().text(inspectable);
 	}
 
+	try {
+		Prism.highlightElement($('#code-hint')[0]);
+	} catch {}
+
 	$('[data-toggle]').click(function(){
 		$('#code-hint').toggle();
 	});
