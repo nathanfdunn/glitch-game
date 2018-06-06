@@ -48,7 +48,7 @@ $(function(){
 
 	try {
 		Prism.highlightElement($('#code-hint')[0]);
-	} catch {}
+	} catch (err) {}
 
 	$('[data-toggle]').click(function(){
 		$('#code-hint').toggle();
